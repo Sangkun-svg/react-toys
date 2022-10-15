@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { TodoItem } from "../TodoItem/TodoItem";
 
 export const TodoList = ({
   todos,
@@ -10,21 +11,13 @@ export const TodoList = ({
     <Fragment>
       {todos.map((todo: any) => {
         return (
-          <ul key={todo.id}>
-            <li>
-              <input type={"checkbox"} />
-              <p>{todo.text}</p>
-              <button
-                onClick={() => {
-                  onChangeSelectedTodo(todo);
-                  onInsertToggle();
-                }}
-              >
-                수정
-              </button>
-              <button onClick={() => onRemove(todo.id)}>삭제</button>
-            </li>
-          </ul>
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onRemove={onRemove}
+            onInsertToggle={onInsertToggle}
+            onChangeSelectedTodo={onChangeSelectedTodo}
+          />
         );
       })}
     </Fragment>

@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { TodoEditModal } from "./components/Modal/TodoEditModal/TodoEditModal";
 import { TodoInsert } from "./components/TodoInsert/TodoInsert";
 import { TodoList } from "./components/TodoList/TodoList";
+import { Layout } from "./layout/Layout";
 
 const App = () => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
@@ -54,7 +55,7 @@ const App = () => {
     setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
   };
   return (
-    <Fragment>
+    <Layout>
       <TodoInsert addTodo={addTodo} />
       <TodoList
         todos={todos}
@@ -70,7 +71,7 @@ const App = () => {
           updateTodo={updateTodo}
         />
       )}
-    </Fragment>
+    </Layout>
   );
 };
 
