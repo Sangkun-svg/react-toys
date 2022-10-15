@@ -1,7 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import { ListContext } from "../../../context/ListContext";
+import { Modal, Box, TextField, Button } from "@mui/material";
 
-export const TodoEditModal = ({ selectedTodo, onVisible, updateTodo }: any) => {
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
+export const TodoEditModal = () => {
+  const { selectedTodo, updateTodo, onVisible, isEditModalVisible }: any =
+    useContext(ListContext);
   const [input, setInput] = useState(selectedTodo.text);
 
   const inputHandler = ({
@@ -16,16 +32,23 @@ export const TodoEditModal = ({ selectedTodo, onVisible, updateTodo }: any) => {
   return (
     <div>
       <BackDrop onClick={onVisible} />
-      <Modal>
-        <form onSubmit={onSubmit}>
-          <p>수정</p>
-          <input
-            value={input}
-            onChange={inputHandler}
-            placeholder="할 일을 입력하세요"
-          />
-          <button>수정하기</button>
-        </form>
+      <Modal open={isEditModalVisible}>
+        <Box sx={style}>
+          <form onSubmit={onSubmit}>
+            <p>할 일 수정하기</p>
+            <TextField
+              value={input}
+              onChange={inputHandler}
+              placeholder="할 일을 입력하세요"
+            />
+            <Button
+              variant="outlined"
+              onClick={() => updateTodo(selectedTodo.id, input)}
+            >
+              수정
+            </Button>
+          </form>
+        </Box>
       </Modal>
     </div>
   );
@@ -39,13 +62,4 @@ const BackDrop = styled.div`
   height: 100vh;
   z-index: 10;
   background: rgba(0, 0, 0, 0.75);
-`;
-
-const Modal = styled.div`
-  position: fixed;
-  top: 30vh;
-  left: 10%;
-  width: 80%;
-  z-index: 100;
-  overflow: hidden;
 `;
