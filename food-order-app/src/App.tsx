@@ -1,7 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Header } from "./components/layout/Header";
 
 const App = () => {
-  return <div>Hello worlds with ts!</div>;
+  return (
+    <Fragment>
+      <Header />
+    </Fragment>
+  );
 };
 
 export default App;
