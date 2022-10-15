@@ -1,22 +1,20 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 export const TodoInsert = (props: any) => {
   const [input, setInput] = useState("");
   const inputHandler = ({
     target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
+  }: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(value);
   };
 
-  const onSubmit = (event: React.FormEvent) => {
+  const onSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
   };
-  const addTodoHandler = () => {
-    const newA = {
-      id: 4,
-      text: input,
-      checked: false,
-    };
-    props.addTodo(newA);
+  const addTodoHandler = (): void => {
+    props.addTodo({ id: uuidv4(), text: input, checked: false });
+    setInput("");
   };
   return (
     <form onSubmit={onSubmit}>

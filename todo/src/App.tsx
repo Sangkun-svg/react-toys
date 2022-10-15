@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { TodoEditModal } from "./components/Modal/TodoEditModal/TodoEditModal";
 import { TodoInsert } from "./components/TodoInsert/TodoInsert";
 import { TodoList } from "./components/TodoList/TodoList";
 
 const App = () => {
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState(null);
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -21,36 +23,54 @@ const App = () => {
       checked: false,
     },
   ]);
-  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
-  const onInputChange = (id: number | any) => {
-    const [{ text }] = todos.filter((todo) => todo.id === id);
-    setTodos(todos.filter((todo) => todo.id === id));
+  const onChangeSelectedTodo = (todo: any) => {
+    setSelectedTodo(todo);
   };
 
-  const onEditModalVisible = () => {
-    setIsEditModalVisible(true);
+  const onInsertToggle = () => {
+    console.log(selectedTodo);
+    if (selectedTodo) {
+      setSelectedTodo(null);
+    }
+    onEditModalToggle();
   };
 
-  const onRemove = (id: number | any) => {
+  const onEditModalToggle = (): void => {
+    setIsEditModalVisible((prev) => !prev);
+  };
+
+  const onRemove = (id: number | string): void => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const addTodo = (newTodo: object) => {
+  const addTodo = (newTodo: object): void => {
     setTodos((preState): any => {
       return [...preState, newTodo];
     });
   };
+  const updateTodo = (id: number | string, text: string) => {
+    onInsertToggle();
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
+  };
   return (
-    <React.Fragment>
+    <Fragment>
       <TodoInsert addTodo={addTodo} />
       <TodoList
         todos={todos}
         onRemove={onRemove}
-        onVisible={onEditModalVisible}
+        onVisible={onEditModalToggle}
+        onChangeSelectedTodo={onChangeSelectedTodo}
+        onInsertToggle={onInsertToggle}
       />
-      {isEditModalVisible && <TodoEditModal />}
-    </React.Fragment>
+      {isEditModalVisible && (
+        <TodoEditModal
+          selectedTodo={selectedTodo}
+          onVisible={onEditModalToggle}
+          updateTodo={updateTodo}
+        />
+      )}
+    </Fragment>
   );
 };
 
