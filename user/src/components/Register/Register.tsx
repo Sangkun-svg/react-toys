@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { TextField, Button } from "@mui/material";
 import { useInput } from "../../hooks/useInput";
 import styled from "styled-components";
-import { dummyData } from "../../dummy/dumy_data";
 
-export const Register = () => {
-  const [users, setUsers] = useState(dummyData);
+export const Register = ({ onToggleReigster, onAddUser }: any) => {
   const id = useInput("");
   const password = useInput("");
   const name = useInput("");
@@ -24,11 +22,11 @@ export const Register = () => {
       email: email.value,
       phone: phone.value,
     };
-    setUsers((preState) => {
-      return [...preState, newUser];
-    });
+    onAddUser(newUser);
   };
 
+  /*
+  TODO: input focus bounce error
   const CustomTextField = ({ placeholderTag, label, value, onChange }: any) => {
     return (
       <TextField
@@ -41,41 +39,63 @@ export const Register = () => {
       />
     );
   };
+   */
 
   return (
     <Wrapper onSubmit={onSubmit}>
-      <CustomTextField
-        placeholderTag={"이름을"}
+      <TextField
+        required
+        id="outlined-required"
+        placeholder={`이름을 입력해주세요`}
         label="Name"
         value={name.value}
         onChange={name.onChange}
       />
-      <CustomTextField
-        placeholderTag={"ID를"}
+      <TextField
+        required
+        id="outlined-required"
+        placeholder={`ID를 입력해주세요`}
         label="ID"
         value={id.value}
         onChange={id.onChange}
       />
-      <CustomTextField
+      <TextField
+        required
+        id="outlined-required"
+        placeholder={`Password를 입력해주세요`}
         label="Password"
-        placeholderTag="비밀번호를"
         value={password.value}
         onChange={password.onChange}
       />
-      <CustomTextField
+
+      <TextField
+        required
+        id="outlined-required"
+        placeholder={`Phone number를 입력해주세요`}
         label="Phone"
-        placeholderTag="핸드폰 번호를"
+        type="text"
         value={phone.value}
         onChange={phone.onChange}
       />
-      <CustomTextField
+      <TextField
+        required
+        id="outlined-required"
+        placeholder={`E-Mail을 입력해주세요`}
         label="E-Mail"
-        placeholderTag="E-Mail을"
         value={email.value}
         onChange={email.onChange}
       />
-      <Button variant="outlined" onClick={handleCreateUser}>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          handleCreateUser();
+          onToggleReigster();
+        }}
+      >
         완료
+      </Button>
+      <Button variant="outlined" onClick={onToggleReigster}>
+        취소
       </Button>
     </Wrapper>
   );
@@ -84,5 +104,7 @@ export const Register = () => {
 const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
+  padding: 10px 300px;
   margin: 200px;
+  height: 400px;
 `;
