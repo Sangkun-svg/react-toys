@@ -19,7 +19,7 @@ function App() {
   const onToggleReigster = () => {
     setIsOpen(!isOpen);
   };
-  console.log(localStorage.getItem("isLoggedIn"));
+  localStorage.getItem("isLoggedIn");
   const loginHandler = (id: string, password: string) => {
     if (emptyInputValidator(id) && emptyInputValidator(password)) {
       const findUser = users.filter(
@@ -38,7 +38,6 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  console.log(isLoggedIn);
   return (
     <React.Fragment>
       {isLoggedIn && <h1>Let's Commit Your TODO List!</h1>}

@@ -1,5 +1,4 @@
 export const emptyInputValidator = (data: string) => {
-  console.log(data);
   //   if (pointer.trim().toString().length < 0) return false;
   return true;
 };
