@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Users } from "./mock/user";
 // import _ from "lodash"; TODO: usgin debounce
 import "./App.css";
-import { Table } from "./Table";
-import { SearchBar } from "./components/SearchBar";
+import { SearchBar, Table } from "./components";
 
 type User = {
   id: number;
