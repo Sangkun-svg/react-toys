@@ -5,7 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 export const SearchBar = ({ query, onQuery, initializationQuery }: any) => {
   return (
     <Label>
-      <input
+      <Input
         type="text"
         placeholder="Search..."
         value={query}
@@ -17,18 +17,23 @@ export const SearchBar = ({ query, onQuery, initializationQuery }: any) => {
     </Label>
   );
 };
+const Input = styled.input`
+  width: 100%;
+  height: 40px;
+  border: none;
+  padding: 0 15px;
+  border: 2px solid black;
+  border-radius: 15px;
+  color: white;
+  ::placeholder {
+    color: black;
+  }
+`;
+
 const Label = styled.label`
   position: relative;
   width: 30%;
   margin: 20px 0;
-  input {
-    width: 100%;
-    height: 40px;
-    border: none;
-    padding: 0 15px;
-    border: 2px solid blue;
-    border-radius: 15px;
-  }
 
   button {
     position: absolute;
