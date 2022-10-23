@@ -21,4 +21,9 @@
   font-size: 25px;
   color: #444;
   font-weight: 300;
+  border-bottom: 1px solid gray;
+}
+
+.listContent {
+  text-align: center;
 }
