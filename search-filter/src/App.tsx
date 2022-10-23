@@ -3,7 +3,6 @@ import { Users } from "./mock/user";
 // import _ from "lodash"; TODO: usgin debounce
 import "./App.css";
 import { SearchBar, Table } from "./components";
-import { last } from "lodash";
 
 type User = {
   id: number;
