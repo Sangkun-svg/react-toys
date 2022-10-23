@@ -27,9 +27,9 @@ export const UserTable = ({ User }: any) => {
         </TableHead>
         {/* Divide */}
         <TableBody>
-          {User.map(({ first_name, last_name, email }: any) => {
+          {User.map(({ id, first_name, last_name, email }: any) => {
             return (
-              <TableRow>
+              <TableRow key={id}>
                 <TableCell align="right">{first_name}</TableCell>
                 <TableCell align="right">{last_name}</TableCell>
                 <TableCell align="center">{email}</TableCell>
