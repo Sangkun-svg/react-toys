@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import { User } from "./mock/user";
+import { Users } from "./mock/user";
 // import _ from "lodash"; TODO: usgin debounce
 import "./App.css";
-import styled from "styled-components";
-import DeleteIcon from "@mui/icons-material/Delete";
-
 import { Table } from "./Table";
 import { SearchBar } from "./components/SearchBar";
 
@@ -18,11 +15,11 @@ type user = {
 
 function App() {
   const [query, setQuery] = useState("");
-  const [filterdUser, setFilterdUser] = useState(User);
+  const [filterdUser, setFilterdUser] = useState(Users);
 
   useEffect(() => {
     setFilterdUser(
-      User.filter(
+      Users.filter(
         (el: user) =>
           el.first_name.toLocaleLowerCase().includes(query.toLowerCase()) ||
           el.last_name.toLocaleLowerCase().includes(query.toLowerCase()) ||
