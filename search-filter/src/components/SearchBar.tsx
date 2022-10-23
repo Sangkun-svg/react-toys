@@ -24,7 +24,6 @@ const Input = styled.input`
   padding: 0 15px;
   border: 2px solid black;
   border-radius: 15px;
-  color: white;
   ::placeholder {
     color: black;
   }
