@@ -5,7 +5,7 @@ import "./App.css";
 import { Table } from "./Table";
 import { SearchBar } from "./components/SearchBar";
 
-type user = {
+type User = {
   id: number;
   first_name: string;
   last_name: string;
@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     setFilterdUser(
       Users.filter(
-        (el: user) =>
+        (el: User) =>
           el.first_name.toLocaleLowerCase().includes(query.toLowerCase()) ||
           el.last_name.toLocaleLowerCase().includes(query.toLowerCase()) ||
           el.email.toLocaleLowerCase().includes(query.toLowerCase())
