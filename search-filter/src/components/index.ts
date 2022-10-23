@@ -1,3 +1,3 @@
 export { SearchBar } from "./SearchBar";
-export { Table } from "./Table";
+export { UserTable } from "./UserTable";
 export { Container } from "./Container";

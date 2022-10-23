@@ -1,0 +1,43 @@
+import * as React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+
+export const UserTable = ({ User }: any) => {
+  return (
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">
+              <h3>Name</h3>
+            </TableCell>
+            <TableCell align="right">
+              <h3>Surname</h3>
+            </TableCell>
+            <TableCell align="center">
+              <h3>Email</h3>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        {/* Divide */}
+        <TableBody>
+          {User.map(({ first_name, last_name, email }: any) => {
+            return (
+              <TableRow>
+                <TableCell align="right">{first_name}</TableCell>
+                <TableCell align="right">{last_name}</TableCell>
+                <TableCell align="center">{email}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};

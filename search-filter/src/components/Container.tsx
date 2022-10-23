@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Users } from "../mock/user";
-import { SearchBar, Table } from "../components";
+import { SearchBar, UserTable } from "../components";
 // import _ from "lodash"; TODO: usgin debounce
 
 import styled from "styled-components";
@@ -45,7 +45,9 @@ export const Container = () => {
         initializationQuery={initializationQuery}
       />
       {filterdUser.length === 0 && <h1>Not Found User</h1>}
-      {filterdUser.length >= 1 && <Table User={filterdUser} query={query} />}
+      {filterdUser.length >= 1 && (
+        <UserTable User={filterdUser} query={query} />
+      )}
     </Wrapper>
   );
 };
