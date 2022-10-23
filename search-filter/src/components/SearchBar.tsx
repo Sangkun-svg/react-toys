@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export const SearchBar = ({ query, onQuery, deleteQuery }: any) => {
+export const SearchBar = ({ query, onQuery, initializationQuery }: any) => {
   return (
     <Label>
       <input
@@ -11,7 +11,7 @@ export const SearchBar = ({ query, onQuery, deleteQuery }: any) => {
         value={query}
         onChange={onQuery}
       />
-      <button onClick={deleteQuery}>
+      <button onClick={initializationQuery}>
         <DeleteIcon />
       </button>
     </Label>

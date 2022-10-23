@@ -10,7 +10,7 @@ type User = {
   first_name: string;
   last_name: string;
   email: string;
-  gender: string; // enum
+  gender: string; // refactor : change enum type
 };
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
     );
   }, [query]);
 
-  const deleteQuery = () => {
+  const initializationQuery = () => {
     setQuery("");
   };
 
@@ -38,7 +38,11 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar query={query} onQuery={onQuery} deleteQuery={deleteQuery} />
+      <SearchBar
+        query={query}
+        onQuery={onQuery}
+        initializationQuery={initializationQuery}
+      />
       {filterdUser.length === 0 && <h1>Not Found User</h1>}
       {filterdUser.length >= 1 && <Table User={filterdUser} query={query} />}
     </div>
