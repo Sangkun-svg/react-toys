@@ -6,6 +6,7 @@ import styled from "styled-components";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { Table } from "./Table";
+import { SearchBar } from "./components/SearchBar";
 
 type user = {
   id: number;
@@ -40,48 +41,11 @@ function App() {
 
   return (
     <div className="App">
-      <Label>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="search"
-          value={query}
-          onChange={onQuery}
-        />
-        <button onClick={deleteQuery}>
-          <DeleteIcon />
-        </button>
-      </Label>
+      <SearchBar query={query} onQuery={onQuery} deleteQuery={deleteQuery} />
       {filterdUser.length === 0 && <h1>Not Found User</h1>}
       {filterdUser.length >= 1 && <Table User={filterdUser} query={query} />}
     </div>
   );
 }
-const Label = styled.label`
-  position: relative;
 
-  input {
-    border: none;
-    padding: 0 15px;
-    height: 40px;
-    border: 2px solid blue;
-    border-radius: 15px;
-  }
-  button {
-    position: absolute;
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-    top: 7px;
-    right: 10px;
-    :hover {
-      border: 1px solid black;
-      border-radius: 10px;
-    }
-  }
-`;
 export default App;
