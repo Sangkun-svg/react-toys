@@ -3,6 +3,7 @@ import { Users } from "./mock/user";
 // import _ from "lodash"; TODO: usgin debounce
 import "./App.css";
 import { SearchBar, Table } from "./components";
+import { last } from "lodash";
 
 type User = {
   id: number;
@@ -16,13 +17,15 @@ function App() {
   const [query, setQuery] = useState("");
   const [filterdUser, setFilterdUser] = useState(Users);
 
+  const filter = (data: string) => {
+    return data.toLowerCase().includes(query.toLowerCase());
+  };
+
   useEffect(() => {
     setFilterdUser(
       Users.filter(
-        (el: User) =>
-          el.first_name.toLocaleLowerCase().includes(query.toLowerCase()) ||
-          el.last_name.toLocaleLowerCase().includes(query.toLowerCase()) ||
-          el.email.toLocaleLowerCase().includes(query.toLowerCase())
+        ({ first_name, last_name, email }: User) =>
+          filter(first_name) || filter(last_name) || filter(email)
       )
     );
   }, [query]);
