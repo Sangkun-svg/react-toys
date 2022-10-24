@@ -2,13 +2,14 @@ import React, { useState, useEffect, useMemo, forwardRef, useRef } from "react";
 import { Users } from "../mock/user";
 import { SearchBar, UserTable } from "../components";
 import _, { debounce } from "lodash";
-import { User } from "../types/User";
+import { User } from "../types";
 import styled from "styled-components";
 
 export const Container = () => {
   const [query, setQuery] = useState<string>("");
   const queryRef = useRef<any>();
   const [filterdUser, setFilterdUser] = useState<User[]>(Users);
+
   const filter = (data: string) => {
     return data.toLowerCase().includes(query.toLowerCase());
   };
@@ -33,7 +34,7 @@ export const Container = () => {
       debounce((query) => {
         setQuery(query);
       }, 200),
-    [query]
+    []
   );
 
   const initializationQuery = () => {
@@ -44,15 +45,12 @@ export const Container = () => {
   return (
     <Wrapper>
       <SearchBar
-        type="text"
         onQuery={onQuery}
         initializationQuery={initializationQuery}
         ref={queryRef}
       />
       {filterdUser.length === 0 && <h1>Not Found User</h1>}
-      {filterdUser.length >= 1 && (
-        <UserTable User={filterdUser} query={query} />
-      )}
+      {filterdUser.length >= 1 && <UserTable User={filterdUser} />}
     </Wrapper>
   );
 };

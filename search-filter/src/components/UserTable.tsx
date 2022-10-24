@@ -7,8 +7,13 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { User } from "../types";
 
-export const UserTable = ({ User }: any) => {
+type UserProps = {
+  User: User[];
+};
+
+export const UserTable = ({ User }: UserProps) => {
   return useMemo(
     () => (
       <TableContainer>
