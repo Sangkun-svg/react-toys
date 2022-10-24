@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, forwardRef, useRef } from "react";
 import { Users } from "../mock/user";
 import { SearchBar, UserTable } from "../components";
-// import _ from "lodash"; TODO: usgin debounce
+import _, { debounce } from "lodash";
 
 import styled from "styled-components";
 
@@ -14,8 +14,9 @@ type User = {
 };
 
 export const Container = () => {
-  const [query, setQuery] = useState("");
-  const [filterdUser, setFilterdUser] = useState(Users);
+  const [query, setQuery] = useState<string>("");
+  const queryRef = useRef<any>();
+  const [filterdUser, setFilterdUser] = useState<User[]>(Users);
   const filter = (data: string) => {
     return data.toLowerCase().includes(query.toLowerCase());
   };
@@ -29,20 +30,32 @@ export const Container = () => {
     );
   }, [query]);
 
-  const initializationQuery = () => {
-    setQuery("");
+  const onQuery = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    debouncedSearch(value);
   };
 
-  const onQuery = ({ target: { value } }: any) => {
-    setQuery(value);
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((query) => {
+        setQuery(query);
+      }, 200),
+    [query]
+  );
+
+  const initializationQuery = () => {
+    queryRef.current.value = "";
+    setQuery("");
   };
 
   return (
     <Wrapper>
       <SearchBar
-        query={query}
+        type="text"
         onQuery={onQuery}
         initializationQuery={initializationQuery}
+        ref={queryRef}
       />
       {filterdUser.length === 0 && <h1>Not Found User</h1>}
       {filterdUser.length >= 1 && (

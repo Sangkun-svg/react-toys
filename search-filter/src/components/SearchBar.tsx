@@ -1,22 +1,24 @@
-// style
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export const SearchBar = ({ query, onQuery, initializationQuery }: any) => {
-  return (
-    <Label>
-      <Input
-        type="text"
-        placeholder="Search..."
-        value={query}
-        onChange={onQuery}
-      />
-      <button onClick={initializationQuery}>
-        <DeleteIcon />
-      </button>
-    </Label>
-  );
-};
+export const SearchBar = forwardRef(
+  ({ onQuery, initializationQuery }: any, queryRef: any) => {
+    return (
+      <Label>
+        <Input
+          type="text"
+          placeholder="Search..."
+          onChange={onQuery}
+          ref={queryRef}
+        />
+        <button onClick={initializationQuery}>
+          <DeleteIcon />
+        </button>
+      </Label>
+    );
+  }
+);
 const Input = styled.input`
   width: 100%;
   height: 40px;
