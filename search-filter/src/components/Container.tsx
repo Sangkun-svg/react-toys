@@ -2,16 +2,8 @@ import React, { useState, useEffect, useMemo, forwardRef, useRef } from "react";
 import { Users } from "../mock/user";
 import { SearchBar, UserTable } from "../components";
 import _, { debounce } from "lodash";
-
+import { User } from "../types/User";
 import styled from "styled-components";
-
-type User = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  gender: string; // refactor : change enum type
-};
 
 export const Container = () => {
   const [query, setQuery] = useState<string>("");
