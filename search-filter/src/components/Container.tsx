@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useMemo, forwardRef, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Users } from "../mock/user";
 import { SearchBar, UserTable } from "../components";
-import _, { debounce } from "lodash";
+import { debounce } from "lodash";
 import { User } from "../types";
 import styled from "styled-components";
 
 export const Container = () => {
   const [query, setQuery] = useState<string>("");
-  const queryRef = useRef<any>();
+  const queryRef = useRef<HTMLInputElement>(null);
   const [filterdUser, setFilterdUser] = useState<User[]>(Users);
 
-  const filter = (data: string) => {
+  const filter = (data: string): boolean => {
     return data.toLowerCase().includes(query.toLowerCase());
   };
 
@@ -25,7 +25,7 @@ export const Container = () => {
 
   const onQuery = ({
     target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
+  }: React.ChangeEvent<HTMLInputElement>): void => {
     debouncedSearch(value);
   };
 
@@ -37,8 +37,8 @@ export const Container = () => {
     []
   );
 
-  const initializationQuery = () => {
-    queryRef.current.value = "";
+  const initializationQuery = (): void => {
+    if (queryRef.current) queryRef.current.value = "";
     setQuery("");
   };
 

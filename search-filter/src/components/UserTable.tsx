@@ -33,7 +33,7 @@ export const UserTable = ({ User }: UserProps) => {
           </TableHead>
           {/* Divide */}
           <TableBody>
-            {User.map(({ id, first_name, last_name, email }: any) => {
+            {User.map(({ id, first_name, last_name, email }: User) => {
               return (
                 <TableRow key={id}>
                   <TableCell align="right">{first_name}</TableCell>

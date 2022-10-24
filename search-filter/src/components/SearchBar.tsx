@@ -2,8 +2,13 @@ import React, { forwardRef } from "react";
 import styled from "styled-components";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export const SearchBar = forwardRef(
-  ({ onQuery, initializationQuery }: any, queryRef: any) => {
+type Props = {
+  onQuery: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  initializationQuery: () => void;
+};
+
+export const SearchBar = forwardRef<HTMLInputElement, Props>(
+  ({ onQuery, initializationQuery }, queryRef) => {
     return (
       <Label>
         <Input
