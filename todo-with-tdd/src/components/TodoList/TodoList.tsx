@@ -14,7 +14,7 @@ type Props = {
 };
 export const TodoList = ({ todos, onToggle, onRemove }: Props) => {
   return (
-    <ul>
+    <ul data-testid="TodoList">
       {todos.map((todo: any) => {
         return (
           <TodoItem
