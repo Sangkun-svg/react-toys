@@ -1,7 +1,7 @@
 import React from "react";
 
 const App = () => {
-  return <React.Fragment></React.Fragment>;
+  return <div>Hello</div>;
 };
 
 export default App;
