@@ -57,7 +57,9 @@ export const TodoApp = () => {
       );
     });
   };
-  const onRemove = () => {};
+  const onRemove = (id: number) => {
+    setTodos(todos.filter((todo: Todo) => todo.id !== id));
+  };
   return (
     <React.Fragment>
       <TodoForm onInsert={onInsert} />
