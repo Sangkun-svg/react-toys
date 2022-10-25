@@ -7,16 +7,21 @@ type Todo = {
   done: boolean;
 };
 
-export const TodoList = ({ todos }: any | Todo[]) => {
+type Props = {
+  todos: Todo[];
+  onToggle: (id: number) => void;
+  onRemove: (id: number) => void;
+};
+export const TodoList = ({ todos, onToggle, onRemove }: Props) => {
   return (
     <ul>
-      {todos.map((todo: Todo) => {
+      {todos.map((todo: any) => {
         return (
           <TodoItem
             key={todo.id}
             todo={todo}
-            onRemove={() => {}}
-            onToggle={() => {}}
+            onToggle={onToggle}
+            onRemove={onRemove}
           />
         );
       })}
