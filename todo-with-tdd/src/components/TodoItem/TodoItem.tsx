@@ -11,7 +11,13 @@ type Props = {
 export const TodoItem = ({ todo: { id, text, done } }: Props) => {
   return (
     <li>
-      <span>{text}</span>
+      <span
+        style={{
+          textDecoration: done ? "line-through" : "none",
+        }}
+      >
+        {text}
+      </span>
       <button>삭제</button>
     </li>
   );
