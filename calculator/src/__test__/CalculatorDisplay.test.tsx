@@ -12,8 +12,14 @@ describe("<CalculatorDisplay />", () => {
     render(<CalculatorDisplay />);
     const input = screen.getByPlaceholderText("0");
     fireEvent.change(input, { target: { value: 100 } });
-    console.log(input);
-
     expect(screen.getByDisplayValue(100)).toBeTruthy();
+  });
+
+  it("could be wirte only number or operator", () => {
+    // TODO: not implement about operator
+    render(<CalculatorDisplay />);
+    const input = screen.getByPlaceholderText("0");
+    fireEvent.change(input, { target: { value: "text" } });
+    expect(screen.queryByDisplayValue("text")).toBeFalsy();
   });
 });

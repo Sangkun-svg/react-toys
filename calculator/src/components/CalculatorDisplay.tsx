@@ -6,7 +6,10 @@ export const CalculatorDisplay = () => {
   const onChangeEnteredValue = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>): void => {
-    setEnteredValue(value);
+    if (value.match(/^[0-9]+$/)) {
+      // TODO: add can write specify string
+      setEnteredValue(value);
+    }
   };
 
   return (
