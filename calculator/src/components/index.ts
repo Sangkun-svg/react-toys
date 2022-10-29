@@ -1,3 +1,3 @@
-export { CalculatorInput } from "./CalculatorInput";
+export { CalculatorDisplay } from "./CalculatorDisplay";
 export { CalculatorNumberBtn } from "./CalculatorNumberBtn";
 export { CalculatorOperatorBtn } from "./CalculatorOperatorBtn";
