@@ -10,9 +10,9 @@ describe("<CalculatorDisplay />", () => {
 
   it("should change input", () => {
     render(<CalculatorDisplay />);
-    const input = screen.getByPlaceholderText("0");
+    const input: HTMLInputElement = screen.getByPlaceholderText("0");
     fireEvent.change(input, { target: { value: 100 } });
-    expect(screen.getByDisplayValue(100)).toBeTruthy();
+    expect(input.value).toBe("100");
   });
 
   it("could be wirte only number or operator", () => {
