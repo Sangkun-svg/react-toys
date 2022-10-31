@@ -1,12 +1,10 @@
 import React from "react";
-import { CalculatorDisplay } from "./components";
+import { CalculratorApp } from "./components";
 
-function App() {
+export default function App() {
   return (
     <div>
-      <CalculatorDisplay />
+      <CalculratorApp />
     </div>
   );
 }
-
-export default App;
