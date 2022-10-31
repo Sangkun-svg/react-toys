@@ -100,18 +100,3 @@ const CalButton = styled(Button)`
 const ZeroButton = styled(Button)`
   grid-column: 1/3;
 `;
-
-const InputBar = styled.input`
-  width: 40%;
-  max-width: 450px;
-  height: 65px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  font-size: 30px;
-  border: 2px solid #4b89dc;
-  text-align: right;
-  padding-right: 20px;
-  &:focus {
-    outline: none;
-  }
-`;
