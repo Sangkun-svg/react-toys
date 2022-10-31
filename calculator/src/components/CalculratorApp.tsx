@@ -4,13 +4,15 @@ import { CalculatorDisplay } from "./CalculatorDisplay";
 import styled from "styled-components";
 export const CalculratorApp = () => {
   const [enteredValue, setEnteredValue] = useState<string>("");
+  const [isPrevOper, setIsPrevOper] = useState<boolean>(true);
 
   /** TODO: add can write specify string */
   const onChangeEnteredValue = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>): void => {
     if (value.match(/^[0-9]+$/)) {
-      setEnteredValue(value);
+      setEnteredValue((prev) => prev + value);
+      setIsPrevOper(false);
     }
   };
 
@@ -24,10 +26,14 @@ export const CalculratorApp = () => {
 
   const numbers = ({ target: { value } }: any) => {
     setEnteredValue((prev) => prev + value);
+    setIsPrevOper(false);
   };
 
   const operators = ({ target: { value } }: any) => {
-    setEnteredValue((prev) => prev + value);
+    if (isPrevOper === false) {
+      setEnteredValue((prev) => prev + value);
+      setIsPrevOper(true);
+    }
   };
 
   const sum = () => {
