@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export const CalculatorBtn = ({}: any) => {
+export const CalculatorBtn = ({ allClear, del }: any) => {
   return (
     <ButtonContainer>
-      <Button>AC</Button>
-      <Button>DEL</Button>
+      <Button onClick={allClear}>AC</Button>
+      <Button onClick={del}>DEL</Button>
       <CalButton value="%">%</CalButton>
       <CalButton value="÷">÷</CalButton>
       <Button value={7}>7</Button>
