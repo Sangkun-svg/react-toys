@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-export const CalculatorDisplay = () => {
-  const [enteredValue, setEnteredValue] = useState<number | string>(0);
 
-  const onChangeEnteredValue = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>): void => {
-    if (value.match(/^[0-9]+$/)) {
-      // TODO: add can write specify string
-      setEnteredValue(value);
-    }
-  };
-
+export const CalculatorDisplay = ({
+  enteredValue,
+  onChangeEnteredValue,
+}: any) => {
   return (
     <div>
       <InputBar
