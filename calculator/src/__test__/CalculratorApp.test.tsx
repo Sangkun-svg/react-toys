@@ -28,4 +28,58 @@ describe("<CalculatorDisplay />", () => {
     fireEvent.click(NUMBER_button);
     expect(input.value).toBe("11");
   });
+
+  it("input value then click operator plus button", () => {
+    render(<CalculratorApp />);
+    const input: HTMLInputElement = screen.getByPlaceholderText("0");
+    const NUMBER_button: HTMLButtonElement = screen.getByText("1");
+    const OPER_button: HTMLButtonElement = screen.getByText("+");
+    const SUM_button: HTMLButtonElement = screen.getByText("=");
+    fireEvent.click(NUMBER_button);
+    fireEvent.click(OPER_button);
+    fireEvent.click(NUMBER_button);
+    fireEvent.click(SUM_button);
+    expect(input.value).toBe("2");
+  });
+
+  it("input value then click operator minus button", () => {
+    render(<CalculratorApp />);
+    const input: HTMLInputElement = screen.getByPlaceholderText("0");
+    const NUMBER_Two_button: HTMLButtonElement = screen.getByText("2");
+    const NUMBER_One_button: HTMLButtonElement = screen.getByText("1");
+    const OPER_button: HTMLButtonElement = screen.getByText("-");
+    const SUM_button: HTMLButtonElement = screen.getByText("=");
+    fireEvent.click(NUMBER_Two_button);
+    fireEvent.click(OPER_button);
+    fireEvent.click(NUMBER_One_button);
+    fireEvent.click(SUM_button);
+    expect(input.value).toBe("1");
+  });
+
+  it("input value then click operator multiplication button", () => {
+    render(<CalculratorApp />);
+    const input: HTMLInputElement = screen.getByPlaceholderText("0");
+    const NUMBER_Two_button: HTMLButtonElement = screen.getByText("2");
+    const OPER_button: HTMLButtonElement = screen.getByText("x");
+    const SUM_button: HTMLButtonElement = screen.getByText("=");
+    fireEvent.click(NUMBER_Two_button);
+    fireEvent.click(OPER_button);
+    fireEvent.click(NUMBER_Two_button);
+    fireEvent.click(SUM_button);
+    expect(input.value).toBe("4");
+  });
+
+  it("input value then click operator division button", () => {
+    render(<CalculratorApp />);
+    const input: HTMLInputElement = screen.getByPlaceholderText("0");
+    const NUMBER_Two_button: HTMLButtonElement = screen.getByText("2");
+    const NUMBER_Four_button: HTMLButtonElement = screen.getByText("4");
+    const OPER_button: HTMLButtonElement = screen.getByText("÷");
+    const SUM_button: HTMLButtonElement = screen.getByText("=");
+    fireEvent.click(NUMBER_Four_button);
+    fireEvent.click(OPER_button);
+    fireEvent.click(NUMBER_Two_button);
+    fireEvent.click(SUM_button);
+    expect(input.value).toBe("2");
+  });
 });

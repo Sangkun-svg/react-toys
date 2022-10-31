@@ -3,7 +3,7 @@ import { CalculatorBtn } from "./CalculatorBtn";
 import { CalculatorDisplay } from "./CalculatorDisplay";
 import styled from "styled-components";
 export const CalculratorApp = () => {
-  const [enteredValue, setEnteredValue] = useState<number | string>("");
+  const [enteredValue, setEnteredValue] = useState<string>("");
 
   /** TODO: add can write specify string */
   const onChangeEnteredValue = ({
@@ -26,13 +26,28 @@ export const CalculratorApp = () => {
     setEnteredValue((prev) => prev + value);
   };
 
+  const operators = ({ target: { value } }: any) => {
+    setEnteredValue((prev) => prev + value);
+  };
+
+  const sum = () => {
+    const result = eval(enteredValue);
+    setEnteredValue((prev) => result);
+  };
+
   return (
     <MainContainer>
       <CalculatorDisplay
         enteredValue={enteredValue}
         onChangeEnteredValue={onChangeEnteredValue}
       />
-      <CalculatorBtn allClear={allClear} del={del} numbers={numbers} />
+      <CalculatorBtn
+        allClear={allClear}
+        del={del}
+        numbers={numbers}
+        operators={operators}
+        sum={sum}
+      />
     </MainContainer>
   );
 };
