@@ -95,10 +95,10 @@ describe("<CalculatorDisplay />", () => {
     render(<CalculratorApp />);
     const input: HTMLInputElement = screen.getByPlaceholderText("0");
     const NUMBER_Two_button: HTMLButtonElement = screen.getByText("2");
-    const DOT_button: HTMLButtonElement = screen.getByText("+");
+    const Plus_button: HTMLButtonElement = screen.getByText("+");
     fireEvent.click(NUMBER_Two_button);
-    fireEvent.click(DOT_button);
-    fireEvent.click(DOT_button);
+    fireEvent.click(Plus_button);
+    fireEvent.click(Plus_button);
     expect(input.value).toBe("2+");
   });
 });
