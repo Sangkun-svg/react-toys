@@ -19,7 +19,11 @@ export const CalculratorApp = () => {
   };
 
   const del = () => {
-    setEnteredValue((prev) => prev.toString().slice(0, -1));
+    setEnteredValue((prev) => String(prev).slice(0, -1));
+  };
+
+  const numbers = ({ target: { value } }: any) => {
+    setEnteredValue((prev) => prev + value);
   };
 
   return (
@@ -28,7 +32,7 @@ export const CalculratorApp = () => {
         enteredValue={enteredValue}
         onChangeEnteredValue={onChangeEnteredValue}
       />
-      <CalculatorBtn allClear={allClear} del={del} />
+      <CalculatorBtn allClear={allClear} del={del} numbers={numbers} />
     </MainContainer>
   );
 };

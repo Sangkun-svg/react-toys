@@ -1,26 +1,46 @@
 import React from "react";
 import styled from "styled-components";
 
-export const CalculatorBtn = ({ allClear, del }: any) => {
+export const CalculatorBtn = ({ allClear, del, numbers }: any) => {
   return (
     <ButtonContainer>
       <Button onClick={allClear}>AC</Button>
       <Button onClick={del}>DEL</Button>
       <CalButton value="%">%</CalButton>
       <CalButton value="÷">÷</CalButton>
-      <Button value={7}>7</Button>
-      <Button value={8}>8</Button>
-      <Button value={9}>9</Button>
+      <Button value={7} onClick={numbers}>
+        7
+      </Button>
+      <Button value={8} onClick={numbers}>
+        8
+      </Button>
+      <Button value={9} onClick={numbers}>
+        9
+      </Button>
       <CalButton value="×">×</CalButton>
-      <Button value={4}>4</Button>
-      <Button value={5}>5</Button>
-      <Button value={6}>6</Button>
+      <Button value={4} onClick={numbers}>
+        4
+      </Button>
+      <Button value={5} onClick={numbers}>
+        5
+      </Button>
+      <Button value={6} onClick={numbers}>
+        6
+      </Button>
       <CalButton value="-">-</CalButton>
-      <Button value={1}>1</Button>
-      <Button value={2}>2</Button>
-      <Button value={3}>3</Button>
+      <Button value={1} onClick={numbers}>
+        1
+      </Button>
+      <Button value={2} onClick={numbers}>
+        2
+      </Button>
+      <Button value={3} onClick={numbers}>
+        3
+      </Button>
       <CalButton value="+">+</CalButton>
-      <ZeroButton value={0}>0</ZeroButton>
+      <ZeroButton value={0} onClick={numbers}>
+        0
+      </ZeroButton>
       <Button value=".">.</Button>
       <CalButton>=</CalButton>
     </ButtonContainer>

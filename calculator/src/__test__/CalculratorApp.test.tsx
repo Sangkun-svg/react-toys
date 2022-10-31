@@ -19,4 +19,13 @@ describe("<CalculatorDisplay />", () => {
     fireEvent.click(DEL_button);
     expect(input.value).toBe("100");
   });
+
+  it("input value then click number button", () => {
+    render(<CalculratorApp />);
+    const input: HTMLInputElement = screen.getByPlaceholderText("0");
+    const NUMBER_button: HTMLButtonElement = screen.getByText("1");
+    fireEvent.click(NUMBER_button);
+    fireEvent.click(NUMBER_button);
+    expect(input.value).toBe("11");
+  });
 });
