@@ -2,6 +2,16 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { CalculratorApp } from "../components";
 
 describe("<CalculatorDisplay />", () => {
+  const setup = () => {
+    render(<CalculratorApp />);
+    const input: HTMLInputElement = screen.getByPlaceholderText("0");
+    const generateOperBtn = (operatorType: string) => {
+      const button: HTMLButtonElement = screen.getByText(operatorType);
+      return button;
+    };
+    return { input, generateOperBtn };
+  };
+
   it("input value all clear when click AC button", () => {
     render(<CalculratorApp />);
     const AC_button: HTMLButtonElement = screen.getByText("AC");
