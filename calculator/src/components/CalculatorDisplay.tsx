@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+type Props = {
+  enteredValue?: string;
+  onChangeEnteredValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
 export const CalculatorDisplay = ({
   enteredValue,
   onChangeEnteredValue,
-}: any) => {
+}: Props) => {
   return (
     <div>
       <InputBar

@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
+type Props = {
+  allClear?: React.MouseEventHandler<HTMLButtonElement>;
+  del?: React.MouseEventHandler<HTMLButtonElement>;
+  numbers?: React.MouseEventHandler<HTMLButtonElement>;
+  operators?: React.MouseEventHandler<HTMLButtonElement>;
+  sum?: React.MouseEventHandler<HTMLButtonElement>;
+};
+
 export const CalculatorBtn = ({
   allClear,
   del,
   numbers,
   operators,
   sum,
-}: any) => {
+}: Props) => {
   return (
     <ButtonContainer>
       <Button onClick={allClear}>AC</Button>

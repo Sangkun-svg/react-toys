@@ -16,27 +16,31 @@ export const CalculratorApp = () => {
     }
   };
 
-  const allClear = () => {
+  const allClear: React.MouseEventHandler = (): void => {
     setEnteredValue((prev) => "");
   };
 
-  const del = () => {
+  const del: React.MouseEventHandler = (): void => {
     setEnteredValue((prev) => String(prev).slice(0, -1));
   };
 
-  const numbers = ({ target: { value } }: any) => {
+  const numbers: React.MouseEventHandler<HTMLButtonElement> = ({
+    currentTarget: { value },
+  }): void => {
     setEnteredValue((prev) => prev + value);
     setIsPrevOper(false);
   };
 
-  const operators = ({ target: { value } }: any) => {
+  const operators = ({
+    currentTarget: { value },
+  }: React.MouseEvent<HTMLButtonElement>): void => {
     if (isPrevOper === false) {
       setEnteredValue((prev) => prev + value);
       setIsPrevOper(true);
     }
   };
 
-  const sum = () => {
+  const sum: React.MouseEventHandler = (): void => {
     const result = eval(enteredValue);
     setEnteredValue((prev) => result);
   };
