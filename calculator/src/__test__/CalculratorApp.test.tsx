@@ -1,5 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { CalculratorApp } from "../components";
+
+afterEach(cleanup);
 
 describe("<CalculatorDisplay />", () => {
   const setup = () => {
